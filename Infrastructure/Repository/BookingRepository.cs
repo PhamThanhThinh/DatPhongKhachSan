@@ -23,5 +23,21 @@ namespace Infrastructure.Repository
       //_db.Update(entity);
       _db.Bookings.Update(entity);
     }
+
+    public void UpdateStatus(int bookingId, string orderStatus)
+    {
+      var bookingFromDatabase = _db.Bookings.FirstOrDefault(b => b.Id == bookingId);
+      if (bookingFromDatabase != null)
+      {
+        bookingFromDatabase.Status = orderStatus;
+        _db.SaveChanges();
+      }
+
+    }
+
+    public void UpdateStripePaymentID(int bookingId, string stripeSessionId, string stripePaymentIntentId)
+    {
+      throw new NotImplementedException();
+    }
   }
 }
