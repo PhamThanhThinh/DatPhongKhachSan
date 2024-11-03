@@ -1,0 +1,67 @@
+Clean Code:
+Chuyển code chức năng từ controller chia ra các class khác hoặc các function khác
+
+Check
+
+
+HoanTatDatPhong
+FinalizeBooking
+
+getter
+setter
+constructer
+(lập trình c/c++/c# java)
+
+flex
+
+Tổng Chi Phí
+
+label
+textbox
+môn lập trình WindowsForm đã học
+
+css inline
+
+asp-for
+
+!=
+one dark pro
+
+16:9
+
+Trust Certificate
+
+
+load thông tin user trong chức năng thanh toán
+
+deploy triển khai trang web trực tuyến
+
+chức năng quản lý đặt phòng khách sạn:
+Pending chưa giải quyết (đã giải quyết đơn hàng hay chưa)
+Approved đã giải quyết
+Completed đã hoàn thành
+Cancelled đã hủy
+Refunded đã hoàn tiền
+CheckedIn đã đăng ký
+
+- trạng thái đăng ký phòng
+- post cho chức năng hoàn thành đăng ký
+
+tạo một action xác nhận đặt phòng
+XacNhanDatPhong
+BookingConfirmation
+QA
+Tester
+PM
+
+giao diện
+asp-route-bookingId
+
+project đào tạo trực tuyến làm theo cách database first
+còn trong project đặt phòng khách sạn làm theo cách code first
+
+quản lý thông tin đặt phòng (quản lý thông tin thanh toán)
+thanh toán (thanh toán bằng số liệu giả)
+
+stripe và paypal
+

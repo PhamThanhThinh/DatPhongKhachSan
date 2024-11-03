@@ -65,7 +65,7 @@ namespace Presentation.Controllers
     //  }
     //  return View(hotelList);
     //}
-    public IActionResult GetHotelByDate(int soDem, DateOnly ngayNhanPhong)
+    public IActionResult GetHotelByDate(int nights, DateOnly ngayNhanPhong)
     {
       // Lấy danh sách khách sạn
       var hotelList = _unitOfWork.Hotel.GetAll(includeProperties: "HotelAmenity").ToList();
@@ -85,7 +85,7 @@ namespace Presentation.Controllers
       {
         CheckInDate = ngayNhanPhong,
         HotelList = hotelList,
-        Nights = soDem
+        Nights = nights
       };
 
       // Trả về View với ViewModel hoàn chỉnh

@@ -2,81 +2,97 @@
 
 <div id="HotelList">
   <div class="row px-lg-5 m-lg-4 m-sm-0 px-sm-0">
-    @foreach (var hotel in Model.HotelList)
+    @if (Model?.HotelList != null && Model.HotelList.Any())
     {
-      <div class="p-4 col-md-12 col-lg-6">
-        <div class="row" style="border-radius: 10px; border: 1px solid #10012A">
-          <div class="col-4 p-2">
-            <img class="w-100" style="border-radius: 10px" src="@hotel.ImageUrl" />
-          </div>
-          <div class="col-8">
-            <div class="d-flex justify-content-between">
-              <p class="card-title"><strong>@hotel.Name</strong></p>
-              <div class="pt-2">
-                <!-- Nút Chi Tiết có thuộc tính để kích hoạt modal -->
-                <button type="button"
-                        class="btn btn-sm btn-outline-primary"
-                        data-bs-toggle="modal"
-                        data-bs-target="#hotelModal-@hotel.Id">
-                  Chi Tiết
-                </button>
-              </div>
+      @foreach (var hotel in Model.HotelList)
+      {
+        <div class="p-4 col-md-12 col-lg-6">
+          <div class="row" style="border-radius: 10px; border: 1px solid #10012A">
+            <div class="col-4 p-2">
+              <img class="w-100" style="border-radius: 10px" src="@hotel.ImageUrl" />
             </div>
-            <p><strong>Mô tả:</strong> @hotel.Description</p>
-          </div>
+            <div class="col-8">
+              <div class="d-flex justify-content-between">
+                <p class="card-title"><strong>@hotel.Name</strong></p>
+                <div class="pt-2">
+                  <!-- Nút Chi Tiết có thuộc tính để kích hoạt modal -->
+                  <button type="button"
+                          class="btn btn-sm btn-outline-primary"
+                          data-bs-toggle="modal"
+                          data-bs-target="#hotelModal-@hotel.Id">
+                    Chi Tiết
+                  </button>
+                </div>
+              </div>
+              <p><strong>Mô tả:</strong> @hotel.Description</p>
+            </div>
 
-          <div class="col-12">
-            <div class="row pb-3 pt-3">
-              <div class="col-4">
-                @if (Model.CheckInDate >= DateOnly.FromDateTime(DateTime.Now))
-                {
-                  if (hotel.IsAvailable)
+            <div class="col-12">
+              <div class="row pb-3 pt-3">
+                <div class="col-4">
+                  @if (Model.CheckInDate >= DateOnly.FromDateTime(DateTime.Now))
                   {
-                    <a class="btn btn-primary form-control">Đặt phòng</a>
+                    if (hotel.IsAvailable)
+                    {
+                      <a 
+                        asp-controller="Booking"
+                         asp-action="FinalizeBooking"
+                        asp-route-hotelId="@hotel.Id"
+                        asp-route-checkInDate="@Model.CheckInDate"
+                        asp-route-checkOutDate="@Model.CheckOutDate"
+                        asp-route-nights="@Model.Nights"
+                        class="btn btn-primary form-control">
+                        Đặt phòng
+                      </a>
+                    }
+                    else
+                    {
+                      @* <p class="color: red;">Khách sạn đầy</p> *@
+                      <a class="btn btn-outline-danger form-control btn-block disabled">
+                        Khách sạn đầy
+                      </a>
+                    }
                   }
-                  else
-                  {
-                    @* <p class="color: red;">Khách sạn đầy</p> *@
-                    <a class="btn btn-outline-danger form-control btn-block disabled">
-                      Khách sạn đầy
-                    </a>
-                  }
-                }
-              </div>
-              <div class="col-4">
-                <span><strong>Số người tối đa:</strong> @hotel.Occupancy</span><br />
-                <span><strong>Số mét vuông:</strong> @hotel.SquareMeter mét vuông</span><br />
-              </div>
-              <div class="col-4">
-                <span class="float-end font-weight-bold pt-1" style="font-size: 14px; color: #240244">
-                  Đô la
-                  <span style="border-bottom:1px solid #FF3D66">
-                    $@hotel.Price
+                </div>
+                <div class="col-4">
+                  <span><strong>Số người tối đa:</strong> @hotel.Occupancy</span><br />
+                  <span><strong>Số mét vuông:</strong> @hotel.SquareMeter mét vuông</span><br />
+                </div>
+                <div class="col-4">
+                  <span class="float-end font-weight-bold pt-1" style="font-size: 14px; color: #240244">
+                    Đô la
+                    <span style="border-bottom:1px solid #FF3D66">
+                      $@hotel.Price
+                    </span>
                   </span>
-                </span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Modal Chi Tiết Thông Tin Khách Sạn cho từng khách sạn -->
-      <div class="modal fade" id="hotelModal-@hotel.Id" tabindex="-1" aria-labelledby="hotelLabel-@hotel.Id">
-        <div class="modal-dialog modal-xl custom-modal-style">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title fs-3 text-primary" id="hotelLabel-@hotel.Id">Chi Tiết Thông Tin Khách Sạn</h2>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body m-0">
-              <partial name="_HotelDetail" model="@hotel" />
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+        <!-- Modal Chi Tiết Thông Tin Khách Sạn cho từng khách sạn -->
+        <div class="modal fade" id="hotelModal-@hotel.Id" tabindex="-1" aria-labelledby="hotelLabel-@hotel.Id">
+          <div class="modal-dialog modal-xl custom-modal-style">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h2 class="modal-title fs-3 text-primary" id="hotelLabel-@hotel.Id">Chi Tiết Thông Tin Khách Sạn</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body m-0">
+                <partial name="_HotelDetail" model="@hotel" />
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      }
+    }
+    else
+    {
+      <p>Không có khách sạn nào để hiển thị!</p>
     }
   </div>
 </div>
