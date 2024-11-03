@@ -1,0 +1,77 @@
+﻿@model HomeViewModel
+
+<div>
+  <div id="idDoChungTaDatTen" class="carousel slide">
+    <div class="carousel-indicators">
+    </div>
+    <div class="carousel-inner">
+      <img src="/img/img-home.jpg" class="d-block w-100" alt="Hình Ảnh Đầu Trang Chủ" />
+    </div>
+    @* button dùng để di chuyển hình ảnh giữa slide các hình ảnh *@
+  </div>
+
+  <form 
+    method="post" 
+    asp-action="GetHotelByDate" 
+    data-ajax-method="post" 
+    data-ajax="true"
+    data-ajax-mode="replace"
+    data-ajax-update="#HotelList"
+    style="background-color: cornflowerblue">
+
+    <div class="row p-0 mx-0 py-6">
+      <div class="col-12 col-md-5 offset-md-1">
+        <div class="form-group">
+          <label>Ngày nhận phòng</label>
+          <input 
+            type="date"
+            asp-for="CheckInDate" 
+            class="form-control" />
+        </div>
+      </div>
+      <div class="col-8 col-md-3">
+        <div class="form-group">
+          <label>Số đêm nghỉ lại khách sạn</label>
+          <select class="form-select">
+            @for (var i = 1; i < 10; i++)
+            {
+              <option value="@i">@i</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div class="col-4 col-md-2">
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">
+            <i class="bi bi-search"></i> Kiểm tra khách sạn nào có phòng còn trống
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </form>
+
+  <partial name="_HotelList" model="Model" />
+
+</div>
+
+@section scripts {
+  <script>
+    // loader 
+    function loadHotelList(){
+      $('.spinner').show();
+      var data = {
+        checkInDate: $("#CheckInDate").val(),
+        nights: $("#Nights").val()
+      };
+
+      $.ajax({
+        type: "POST",
+
+      })
+    }
+  </script>
+}
+

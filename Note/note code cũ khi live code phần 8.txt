@@ -1,0 +1,86 @@
+<div id="HotelList">
+  <div class="row px-lg-5 m-lg-4 m-sm-0 px-sm-0" style="">
+    @foreach (var hotel in Model.HotelList)
+    {
+      <div class="p-4 col-md-12 col-lg-6">
+        <div class="row" style="border-radius: 10px; border: 1px solid #10012A">
+          <div class="col-4 p-2">
+            <img class="w-100" style="border-radius: 10px" src="@hotel.ImageUrl" />
+          </div>
+          <div class="col-8">
+            <div class="d-flex justify-content-between">
+              <p class="card-title" style=""><strong>@hotel.Name</strong></p>
+              <div class="pt-2">
+                <button type="button"
+                        class="btn btn-sm btn-outline-primary">
+                  Chi Tiết
+                </button>
+              </div>
+            </div>
+            <p><strong>Mô tả:</strong> @hotel.Description</p>
+          </div>
+
+          <div class="col-12">
+            <div class="row pb-3 pt-3">
+              <div class="col-4">
+                <a class="btn btn-primary form-control">
+                  Đặt phòng
+                </a>
+              </div>
+              <div class="col-4">
+                <span class=""><strong>Số người tối đa:</strong> @hotel.Occupancy</span><br />
+                <span class=""><strong>Số mét vuông:</strong> @hotel.SquareMeter mét vuông</span><br />
+              </div>
+              <div class="col-4">
+                <span class="text-warning float-end font-weight-bold pt-1" style="font-size: 14px;">
+                  Đô la
+                  <span style="border-bottom:1px solid #E2DF60">
+                    $@hotel.Price
+                  </span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="viDu-@(1)" tabindex="-1" aria-labelledby="viDuLabelPopup-@(1)">
+        <div class="modal-dialog modal-xl custom-modal-style">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title fs-3 text-primary" id="viDuLabelPopup-@(1)">Chi Tiết Thông Tin Khách Sạn</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body m-0">
+              <p>Chi Tiết Thông Tin Khách Sạn</p>
+              <!-- Thêm nội dung chi tiết tại đây -->
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
+code cũ:
+      @* <div class="modal fade" id="viDu-@(1)" tabindex="-1" aria-labelledby="viDuLabelPopup">
+        <div class="modal-dialog modal-xl" style="border: 1px solid #00D58B; border-radius: 10px;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title fs-3 text-primary" id="viDuLabelPopup">Chi Tiết Thông Tin Khách Sạn</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body m-0">
+              Chi Tiết Thông Tin Khách Sạn
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div> *@
+
+<p class="card-title"><strong>@hotel.Name</strong></p>
+<p><strong>Mô tả:</strong> @hotel.Description</p>

@@ -1,0 +1,38 @@
+Hôm nay sẽ làm phần giao diện trang home (sửa lại và sau đó làm poup thông tin chi tiết khách sạn)
+đẩy dữ liệu từ database lên trang home
+
+hàng rau (row là hàng)
+reset css
+padding margin thành 0
+blazor + api + MAUI 
+một ứng dụng web và ứng mobile có thể dùng chung database được không -> được
+api + web (blazor) + mobile(maui)
+ -> thuần C#
+
+dự án outsing thì dùng công nghệ cũ hơn xíu -> chúng ta sẽ nâng cấp hoặc thêm chức năng từ dự án đã có
+
+Hotel Details Modal/Popup
+css inline
+
+đưa code Popup vào partial view để code trong index (trong home) ngắn gọn hơn
+
+sử dụng thư viện Identity để làm các chức năng đăng ký đăng nhập đăng xuất phân quyền
+
+DatPhongKhachSan.Web
+
+tạo project với 4 tầng
+cấu trúc clean
+
+đã xong bước cài thêm thư viện identity
+
+bước 1: cài thêm thư viện identity
+
+
+add-migration mô tả
+add-migration identity
+update-database
+
+bước 2: tạo identity
+
+
+

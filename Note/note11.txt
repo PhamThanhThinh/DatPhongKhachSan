@@ -1,0 +1,23 @@
+add-migration mota
+update-database
+sha
+md5 (cũ hơn và bảo mật kém)
+
+Làm login và register
+(đăng nhập và đăng ký)
+link cdn
+tạo bảng liên quan tới phân quyền (role)
+đăng ký là admin hay là user bình thường
+
+!bool
+ban đầu là true thì sẽ chuyển lại thành false
+
+Chúng ta đã add xong role cho hệ thống đặt phòng khách sạn online
+
+role quyền/vai trò (ở đây chúng ta sẽ gọi là loại tài khoản cho dễ nha)
+
+say no to magic strings
+nguyên tắc dùng hằng số thay vì dùng chuỗi
+
+Đăng xuất
+

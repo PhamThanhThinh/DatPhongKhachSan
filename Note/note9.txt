@@ -1,0 +1,19 @@
+VPS nhanh hơn hosting
+hosting rẻ hơn VPS
+VPS khó cài đặt
+hosting dễ cài hơn
+
+trong tương lai chúng ta cần deploy triển trang web lên môi trường mạng
+
+Windows
+
+asp web forms: thường dùng ado
+asp .net framework: thường dùng entity framework
+asp .net core: thường dùng .net core
+
+đóng băng hibernet
+
+href="#"
+
+
+

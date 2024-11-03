@@ -1,0 +1,34 @@
+Đăng Ký
+Đăng Nhập
+Đăng Xuất
+Phân quyền: Dùng từ chối quyền truy cập để khi người dùng đăng nhập sai quyền
+=> báo lỗi
+Admin không dùng dịch vụ của User mà chỉ quản lý thông tin.
+- Làm việc với cookies (phân quyền người dùng)
+- Thay đổi mật khẩu
++ API (get api) khi đăng nhập bằng tài khoản google
++ Mình lưu tài khoản trong database thì tự code
+Quy định độ dài của mật khẩu
+6 tới 100
+Liên quan tới ReturnUrl
+Đã xong những gì liên quan tới thư viện Identity
+Chuẩn bị cho chức năng Booking
+Hotel
+- Booking
+- Biểu đồ (vẽ biểu đồ: tròn, cột, đường)
+- Báo cáo (tải về file word file pdf)
+- Làm trang admin (trang dashboard)
+- Deloy
+
+- Tiếp tục làm chức năng liên tới khách sạn (thực thể hotel)
+Lịch
+API
+
+tổng chi phí total cost
+
+ánh xạ mapping
+
+add-migration mota
+update-database
+
+Action cho Booking

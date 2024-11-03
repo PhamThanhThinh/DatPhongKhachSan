@@ -1,0 +1,16 @@
+Đầu phỏng vấn, Giới thiệu về bản thân của em?
+Công nghệ yêu thích
+
+Trong phỏng vấn
+.net core có những phiên bản nào
+
+linq, DI, ...
+
+câu hỏi về kiến thức cơ bản: mảng, ...
+nên ôn lại câu trúc dữ liệu và giải thuật: lỡ người ta cho mình 1 bài toán và bắt mình giải quyết trực tiếp khi đang phỏng vấn
+
+
+
+Cuối phỏng vấn, Em có câu nào không?
+người ta đang kiểm tra tính chủ động của bạn đang được phỏng vấn
+không được trả lời là không có câu hỏi nào

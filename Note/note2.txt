@@ -1,0 +1,19 @@
+HttpPost
+SaveChange()
+
+add-migration dulieukhoitao
+update-database
+ngôn ngữ đánh dấu
+html, xml
+variable
+template có trang error
+
+@* @if (TempData["error"] != null)
+{
+  <div class="text-danger">@TempData["error"]</div>
+}
+
+@if(TempData["success"] != null)
+{
+    <div class="text-danger">@TempData["success"]</div>
+} *@

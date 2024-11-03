@@ -1,0 +1,95 @@
+interface service
+IHotelRepository
+sql thuần: nối chuỗi
+làm với linq
+
+game mobile dùng môi trường giả lập cho nên rất nặng máy khi code (build dự án)
+còn ứng dụng desktop, web thì nó dùng môi trường của hệ điều hành luôn nên nhẹ hơn
+
+class User
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Domain.Entities
+{
+  public class User : IdentityUser
+  {
+    public string Name { get; set; }
+    public DateTime CreatedDate { get; set; }
+  }
+}
+
+class Booking
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Domain.Entities
+{
+  public class Booking
+  {
+    [Key]
+    public int Id { get; set; }
+
+    [Required]
+    public string UserId { get; set; }
+    [ForeignKey("UserId")]
+    public User User { get; set; }
+
+    [Required]
+    public int HotelId { get; set; }
+    [ForeignKey("HotelId")]
+    public Hotel Hotel { get; set; }
+
+    [Required]
+    public string Name { get; set; }
+    [Required]
+    public string Email { get; set; }
+    public string? Phone { get; set; }
+
+    // tổng chi phí
+    [Required]
+    public double TotalCost { get; set; }
+    public int Nights { get; set; }
+    public string? Status { get; set; }
+
+    // ngày đặt phòng
+    [Required]
+    public DateTime BookingDate { get; set; }
+    // ngày nhận phòng
+    [Required]
+    public DateOnly CheckInDate { get; set; }
+    // ngày trả phòng
+    [Required]
+    public DateOnly CheckOutDate { get; set; }
+
+    // trường dành cho chức năng thanh toán
+    // thanh toán có thành công không
+    public bool IsPaymentSuccessful { get; set; }
+    // ngày thanh toán
+    public DateTime PaymentDate { get; set; }
+
+    public string? StripeSessionId { get; set; }
+    public string? StripePaymentIntentId { get; set; }
+
+    // ngày nhận phòng thực tế
+    public DateTime ActualCheckInDate { get; set; }
+    // ngày trả phòng thực tế
+    public DateTime ActualCheckOutDate { get; set; }
+    
+    public int HotelNumber { get; set; }
+
+    [NotMapped]
+    public List<HotelNumber> HotelNumbers { get; set; }
+  }
+}
+
