@@ -1,0 +1,48 @@
+Push (chức năng là đưa code lên)
+Pull (cập nhật lại code từ github về local)
+
+Thanh toán Stripe ít dùng ở Việt Nam vì không liên kết được ngân hàng Việt Nam
+Thanh toán Paypal (có liên kết ngân hàng ở Việt Nam được)
+
+Admin
+Customer
+
+Dịch vụ tạo tài khoản ngân hàng tạm thời
+paypal 2 tài khoản: dev (sandbox để test chức năng thanh toán) và tài khoản thanh toán bình thường
+stripe tích hợp luôn: tkbt +  dev
+
+stripe: 
+Publishable key
+Secret key
+paypal
+dùng một key duy nhất
+deprecated
+
+stripe.net
+paypal
+
+const hằng số
+
+ngày nhận phòng so sánh số đêm ra ngày ngày trả phòng
+5->6
+đặt cờ hiệu (dùng true false)
+Trời mưa to quá
+tạo method UpdateStripePaymentID
+Lấy key của hệ thống thanh toán: stripe (không có ở Việt Nam), nên dùng paypal (có ở Việt Nam)
+Đăng ký stripe chỉ email (xác thực tài khoản) và tên (full name)
+SecretKey
+- lấy stripe key (từ accout trong hệ thống thanh toán)
+- thêm stripe key vào appsettings.json (code project)
+- cài nuget package: stripe.net (vào trong tầng web, tầng người dùng thao tác được với trang web)
+- tạo session (viết code trong Program.cs)
+- thử chức năng thanh toán
+{
+...
+}
+
+Thanh toán tới đó (đặt phòng)
+Quản lý đặt phòng (thêm xóa sửa đọc dữ liệu)
+
+Read -> Index -> List (danh sách)
+
+cài thư viện của giao diện admin (thư viện là của người ta, tự code UI)

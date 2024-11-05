@@ -1,4 +1,5 @@
 ﻿using Application.Common.Interfaces;
+using Application.Common.Utility;
 using Domain.Entities;
 using Infrastructure.Data;
 using System;
@@ -24,20 +25,40 @@ namespace Infrastructure.Repository
       _db.Bookings.Update(entity);
     }
 
-    public void UpdateStatus(int bookingId, string orderStatus)
+    public void UpdateStatus(int bookingId, string bookingStatus)
     {
       var bookingFromDatabase = _db.Bookings.FirstOrDefault(b => b.Id == bookingId);
       if (bookingFromDatabase != null)
       {
-        bookingFromDatabase.Status = orderStatus;
-        _db.SaveChanges();
+        bookingFromDatabase.Status = bookingStatus;
+        if (bookingStatus == UserRoles.StatusCheckedIn)
+        {
+          bookingFromDatabase.ActualCheckInDate = DateTime.Now;
+        }
+        if (bookingStatus == UserRoles.StatusCompleted)
+        {
+          bookingFromDatabase.ActualCheckOutDate = DateTime.Now;
+        }
       }
 
     }
 
     public void UpdateStripePaymentID(int bookingId, string stripeSessionId, string stripePaymentIntentId)
     {
-      throw new NotImplementedException();
+      var bookingFromDatabase = _db.Bookings.FirstOrDefault(b => b.Id == bookingId);
+      if (bookingFromDatabase != null)
+      {
+        if (!string.IsNullOrEmpty(stripeSessionId))
+        {
+          bookingFromDatabase.StripeSessionId = stripeSessionId; ;
+        }
+        if (!string.IsNullOrEmpty(stripePaymentIntentId))
+        {
+          bookingFromDatabase.StripePaymentIntentId = stripePaymentIntentId;
+          bookingFromDatabase.PaymentDate = DateTime.Now;
+          bookingFromDatabase.IsPaymentSuccessful = true;
+        }
+      }
     }
   }
 }

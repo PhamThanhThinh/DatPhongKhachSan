@@ -90,6 +90,9 @@ namespace Presentation.Controllers
 
       // Trả về View với ViewModel hoàn chỉnh
       return View(homeViewModel);
+
+      // Trả về một partial view
+      //return PartialView("_HotelList", homeViewModel);
     }
 
 

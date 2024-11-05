@@ -56,7 +56,7 @@ namespace Domain.Entities
     // phuong thuc thanh toan: stripe hoặc paypal
     // mã định danh của phiên giao dịch
     public string? StripeSessionId { get; set; }
-    // lưu thông tin thanh toán
+    // lưu thông tin thanh toán (đã hoàn thành thanh toán...)
     public string? StripePaymentIntentId {  get; set; }
 
     // ngay nhan phong thuc te
