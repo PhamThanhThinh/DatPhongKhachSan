@@ -1,0 +1,18 @@
+Thanh toán
+Người dùng
+Trang admin:
+báo cáo: biểu đồ
+in ra pdf: in hóa đơn
+
+dùng thư viện giao diện của datatables để tạo grid:
+https://datatables.net/
+CSS
+//cdn.datatables.net/2.2.2/css/dataTables.dataTables.min.css
+JS
+//cdn.datatables.net/2.2.2/js/dataTables.min.js
+
+
+WPF giao diện XAML
+
+Blazor code ứng dụng máy tính
+

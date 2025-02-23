@@ -21,6 +21,11 @@ namespace Presentation.Controllers
       _unitOfWork = unitOfWork;
     }
 
+    public IActionResult Index()
+    {
+      return View();
+    }
+
     //[Authorize]
     [Authorize(Roles = UserRoles.Role_Customer)]
     public IActionResult FinalizeBooking(int hotelId, DateOnly checkInDate, int nights)
@@ -131,6 +136,32 @@ namespace Presentation.Controllers
     {
       return View(bookingId);
     }
+
+    #region Gọi API
+    [HttpGet]
+    //[Authorize]
+    public IActionResult GetAll()
+    {
+      IEnumerable<Booking> objBookings;
+
+      if (User.IsInRole(UserRoles.Role_Admin))
+      {
+        objBookings = _unitOfWork.Booking.GetAll(includeProperties: "User,Hotel");
+      }
+      else
+      {
+        var claimsIdentity = (ClaimsIdentity)User.Identity;
+        var userId = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+        objBookings = _unitOfWork.Booking.GetAll(u => u.UserId == userId, includeProperties: "User,Hotel");
+
+      }
+      //objBookings = _unitOfWork.Booking.GetAll(includeProperties: "ApplicationUser,Hotel");
+      return Json(new { data = objBookings });
+
+    }
+    #endregion
+
 
   }
 }
