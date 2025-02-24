@@ -139,7 +139,7 @@ namespace Presentation.Controllers
 
     #region Gọi API
     [HttpGet]
-    //[Authorize]
+    [Authorize]
     public IActionResult GetAll()
     {
       IEnumerable<Booking> objBookings;
@@ -156,11 +156,41 @@ namespace Presentation.Controllers
         objBookings = _unitOfWork.Booking.GetAll(u => u.UserId == userId, includeProperties: "User,Hotel");
 
       }
-      //objBookings = _unitOfWork.Booking.GetAll(includeProperties: "ApplicationUser,Hotel");
+      objBookings = _unitOfWork.Booking.GetAll(includeProperties: "User,Hotel");
       return Json(new { data = objBookings });
 
     }
     #endregion
+
+    //[HttpGet]
+    //[Authorize]
+    //public IActionResult GetAll(int page = 1, int pageSize = 10)
+    //{
+    //  var claimsIdentity = User.Identity as ClaimsIdentity;
+    //  var userIdClaim = claimsIdentity?.FindFirst(ClaimTypes.NameIdentifier);
+    //  if (userIdClaim == null)
+    //  {
+    //    return Unauthorized(new { message = "User is not authenticated" });
+    //  }
+    //  var userId = userIdClaim.Value;
+
+    //  var objBookings = _unitOfWork.Booking
+    //      .GetAll(u => u.UserId == userId, includeProperties: "User,Hotel")
+    //      .Skip((page - 1) * pageSize)
+    //      .Take(pageSize)
+    //      .Select(b => new
+    //      {
+    //        b.Id,
+    //        b.CheckInDate,
+    //        b.CheckOutDate,
+    //        User = new { b.User.Id, b.User.Name },
+    //        Hotel = new { b.Hotel.Id, b.Hotel.Name }
+    //      })
+    //      .ToList();
+
+    //  return Json(new { data = objBookings });
+    //}
+
 
 
   }

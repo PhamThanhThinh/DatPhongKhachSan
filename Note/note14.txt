@@ -16,3 +16,25 @@ WPF giao diện XAML
 
 Blazor code ứng dụng máy tính
 
+tuần 5
+báo cáo thi tuần 8
+
+inter 4
+EditProfile
+EditUser
+làm thêm phần quản lý để tăng độ phức tạp
+
+google drive
+
+video: riêng tư
+chia sẽ qua email:
+trieuquoc16052004@gmail.com
+
+thứ 3
+
+
+
+
+
+
+
