@@ -17,6 +17,9 @@ function loadDataTable() {
       { data: 'name', "width": "5%" },
       { data: 'email', "width": "5%" },
       { data: 'phone', "width": "5%" },
+      { data: 'status', "width": "5%" },
+      { data: 'checkInDate', "width": "5%" },
+      { data: 'nights', "width": "5%" },
       { data: 'totalCost', "width": "5%" }
     ]
   });
