@@ -140,7 +140,7 @@ namespace Presentation.Controllers
     #region Gọi API
     [HttpGet]
     [Authorize]
-    public IActionResult GetAll()
+    public IActionResult GetAll(string status)
     {
       IEnumerable<Booking> objBookings;
 
@@ -156,7 +156,12 @@ namespace Presentation.Controllers
         objBookings = _unitOfWork.Booking.GetAll(u => u.UserId == userId, includeProperties: "User,Hotel");
 
       }
-      objBookings = _unitOfWork.Booking.GetAll(includeProperties: "User,Hotel");
+      if (!string.IsNullOrEmpty(status))
+      {
+        //objBookings = _unitOfWork.Booking.GetAll(includeProperties: "User,Hotel");
+        objBookings = objBookings.Where(u => u.Status.ToLower().Equals(status.ToLower()));
+      }
+      
       return Json(new { data = objBookings });
 
     }

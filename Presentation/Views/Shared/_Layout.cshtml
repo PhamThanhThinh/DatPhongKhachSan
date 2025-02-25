@@ -50,10 +50,19 @@
                 <li class="nav-item">
                   <a class="nav-link text-dark" asp-controller="Amenity" asp-action="Index">Dịch Vụ Của Khách Sạn</a>
                 </li>
-                <li class="nav-item">
+                @* ctrl K U *@
+                @* <li class="nav-item">
                   <a class="nav-link text-dark" asp-controller="Booking" asp-action="Index">Danh Sách Booking</a>
+                </li> *@
+                @* <li class="nav-item">
+                  <a class="nav-link text-dark" asp-controller="Booking" asp-action="Index" asp-route-status="@UserRoles.StatusPending">Danh Sách Booking Đang Pending</a>
+                </li> *@
+                @* <li class="nav-item">
+                  <a class="nav-link text-dark" asp-controller="Booking" asp-action="Index" asp-route-status="@UserRoles.StatusApproved">Danh Sách Booking Đã Approved</a>
+                </li> *@
+                <li class="nav-item">
+                  <a class="nav-link text-dark" asp-controller="Booking" asp-action="Index" asp-route-status="@UserRoles.StatusApproved">Danh Sách Booking</a>
                 </li>
-
 
               </ul>
 

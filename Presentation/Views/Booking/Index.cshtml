@@ -1,4 +1,39 @@
-﻿@model IEnumerable<Domain.Entities.Booking>
+﻿@* @using Application.Common.Utility *@
+
+@{
+  var status = Context.Request.Query["status"];
+  var approved = "";
+  var pending = "";
+  var checkedIn = "";
+  var completed = "";
+  var cancelled = "";
+  var refunded = "";
+
+  switch (status)
+  {
+    case UserRoles.StatusPending:
+      pending = "text-dark bg-primary";
+      break;
+    case UserRoles.StatusApproved:
+      approved = "text-dark bg-primary";
+      break;
+    case UserRoles.StatusCompleted:
+      completed = "text-dark bg-primary";
+      break;
+    case UserRoles.StatusCancelled:
+      cancelled = "text-white bg-primary";
+      break;
+    case UserRoles.StatusRefunded:
+      refunded = "text-white bg-primary";
+      break;
+    case UserRoles.StatusCheckedIn:
+      checkedIn = "text-white bg-primary";
+      break;
+
+  }
+
+}
+
 
 <div class="w-100 card border-0 p-4">
   <div class="card-header bg-primary bg-gradient m-lg-0 py-3">
@@ -9,7 +44,50 @@
     </div>
   </div>
   <div class="card-body border p-4">
-
+    <div class="d-flex justify-content-end pb-4 pt-2">
+      <ul class="list-group list-group-horizontal-sm">
+        @* <a style="text-decoration:none;" asp-controller="Booking" asp-action="Index" asp-route-status="Pending">
+          <li class="list-group-item"> Pending </li>
+        </a> *@
+        <a 
+          style="text-decoration:none;" 
+          asp-controller="Booking" 
+          asp-action="Index" 
+          asp-route-status="@UserRoles.StatusPending">
+        <li class="list-group-item @pending"> @UserRoles.StatusPending </li>
+        </a>
+        <a style="text-decoration:none;"
+           asp-controller="Booking"
+           asp-action="Index"
+           asp-route-status="@UserRoles.StatusApproved">
+        <li class="list-group-item @approved"> @UserRoles.StatusApproved </li>
+        </a>
+        <a style="text-decoration:none;"
+           asp-controller="Booking"
+           asp-action="Index"
+           asp-route-status="@UserRoles.StatusCompleted">
+        <li class="list-group-item @completed"> @UserRoles.StatusCompleted </li>
+        </a>
+        <a style="text-decoration:none;"
+           asp-controller="Booking"
+           asp-action="Index"
+           asp-route-status="@UserRoles.StatusCancelled">
+        <li class="list-group-item @cancelled"> @UserRoles.StatusCancelled </li>
+        </a>
+        <a style="text-decoration:none;"
+           asp-controller="Booking"
+           asp-action="Index"
+           asp-route-status="@UserRoles.StatusRefunded">
+        <li class="list-group-item @refunded"> @UserRoles.StatusRefunded </li>
+        </a>
+        <a style="text-decoration:none;"
+           asp-controller="Booking"
+           asp-action="Index"
+           asp-route-status="@UserRoles.StatusCheckedIn">
+        <li class="list-group-item @checkedIn"> @UserRoles.StatusCheckedIn </li>
+        </a>
+      </ul>
+    </div>
     <table id="tableBookings" class="table table-bordered table-striped">
       <thead>
         <tr>
