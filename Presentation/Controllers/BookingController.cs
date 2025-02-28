@@ -137,6 +137,15 @@ namespace Presentation.Controllers
       return View(bookingId);
     }
 
+    [Authorize]
+    public IActionResult BookingDetail(int bookingId)
+    {
+      Booking bookingFromDb = _unitOfWork.Booking.Get(u => u.Id == bookingId,
+        includeProperties: "User,Hotel");
+
+      return View(bookingFromDb);
+    }
+
     #region Gọi API
     [HttpGet]
     [Authorize]
